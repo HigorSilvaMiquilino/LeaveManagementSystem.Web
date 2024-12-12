@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using LeaveManagementSystem.Web.Data;
-using LeaveManagementSystem.Web.Models.LeaveTypes;
-using AutoMapper;
-using Microsoft.AspNetCore.Identity;
+﻿using LeaveManagementSystem.Web.Models.LeaveTypes;
 using LeaveManagementSystem.Web.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagementSystem.Web.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
 
@@ -21,7 +15,7 @@ namespace LeaveManagementSystem.Web.Controllers
         public LeaveTypesController(ILeaveTypeServices leaveTypeServices)
         {
             this._leaveTypeServices = leaveTypeServices;
-            
+
         }
 
         // GET: LeaveTypes
